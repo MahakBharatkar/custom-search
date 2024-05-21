@@ -1,0 +1,14 @@
+.resultsContainer {
+    max-height: 400px;
+    overflow-y: auto;
+    outline: none;
+    max-width: 400px;
+  }
+
+.noResults{
+    height: 200px;
+    max-width: 400px;
+    border: 1px solid grey;
+    text-align: center;
+    padding: 24px 0;
+}

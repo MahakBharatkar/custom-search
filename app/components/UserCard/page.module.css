@@ -1,0 +1,28 @@
+.userCard {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    cursor: pointer;
+    max-width: 400px;
+  }
+  
+  .highlightCard {
+    background-color: #f3efc0;
+  }
+  
+  .highlight {
+    color: blue;
+  }
+
+  .id{
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  .name{
+    font-style: italic;
+  }
+
+  .address{
+    font-weight: 300;
+  }
