@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./page.module.css";
 import UserCard from "../UserCard/page";
 
 const SearchResults = ({ users, searchQuery }) => {
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  console.log(highlightedIndex, 'highlightedIndex');
+
+  const cardRefs = useRef([]);
 
   const handleMouseOver = (index) => {
     setHighlightedIndex(index);
@@ -31,6 +34,13 @@ const SearchResults = ({ users, searchQuery }) => {
     );
   });
 
+  useEffect(() => {
+    if (highlightedIndex !== -1 && cardRefs.current[highlightedIndex]) {
+      cardRefs.current[highlightedIndex].scrollIntoView({ behavior: 'smooth'});
+    }
+  }, [highlightedIndex]);
+
+
   if(!filteredUsers.length) {
     return <div className={styles.noResults}>No User found</div>
   }
@@ -51,6 +61,7 @@ const SearchResults = ({ users, searchQuery }) => {
                 highlight={searchQuery}
                 isHighlighted={index === highlightedIndex}
                 onMouseOver={() => handleMouseOver(index)}
+                ref={(el) => (cardRefs.current[index] = el)}
               />
             );
           })
